@@ -4,7 +4,7 @@ Skin Lesions Classification through Deep Learning methods, based on DenseNet-121
 
 ## Description
 
-This project comprises Deep Learning approaches to classify skin lesions of ISIC 2018 dataset, which includes lesions from 7 different classes as shown in the next image.
+This project comprises Deep Learning approaches to classify skin lesions of ISIC 2018 dataset (with 10,015 images), which includes lesions from 7 different classes as shown in the next image.
 
 <img src="/Images/hier_skin.png" width="720">
 
@@ -20,6 +20,13 @@ deep learning:
 3. a mixed model, which combines these approaches, in order to capture the strengths of each previous one. 
 
 **Conclusion:** We verified that the hierarchical model was affected by error propagation of intermediate decisions, in comparison with the flat classifier. On the other hand, the mixed model significantly improves the results of both approaches.
+
+
+## Dataset Augmentation and Handling Unbalanced Dataset
+
+This dataset was randomly divided in training (∼ 80 %) and validation (∼ 20 %) sets, resulting in a training set comprising 8,004 images and a validation set with 2,011 images. In order to improve generalization the experiments were carried out using offline data augmentation: each training image generated two artificial images, corresponding to a vertical flip and a 90º rotation. This resulted in a training set of 24,012 images.
+
+The training set is unbalanced, therefore we assigned a weight on the loss function for each class: **w_c = N / N_c**, where w_c is the weight of class c, N is the size of the training set, and N_c is the number of training images from class c. 
 
 ## Flat Classifier
 
@@ -62,7 +69,7 @@ in the next figure. Although the second decision of the mixed model is correct, 
 
 ## Results
 
-The next image shows the confusion matrices obtained with the following approaches from top-left: **flat**, **hier-non-shared**, **hier-shared**, and **mixed**
+The next image shows the confusion matrices obtained with the following approaches from top-left: **flat**, **hier-non-shared**, **hier-shared**, and **mixed**.
 
 
 <img src="/Images/conf_matrices.png" width="820">
