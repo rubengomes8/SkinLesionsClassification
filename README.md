@@ -28,7 +28,7 @@ The flat classifier consists of the CNN backbone, followed by a global average p
 This model performs a **single decision** when predicting the class of an image.
 
 
-<img src="/Images/flat.png" width="720">
+<img src="/Images/flat.png" width="520">
 
 ## Hierarchical Classifier
 
@@ -40,7 +40,7 @@ The hierarchical model exploits the hierarchical organization of skin lesions. W
 The inference stage is illustrated in the next image. Since there are only one melanocytic-benign class, and only one non-melanocytic-malignant class we can reduce the number of decision levels from 3 to 2 for melanocytic lesions.
 
 
-<img src="/Images/hier_inference.png" width="720">
+<img src="/Images/hier_inference.png" width="620">
 
 Two different strategies were investigated:
 
@@ -58,11 +58,11 @@ two classes.
 Each of the five classifiers is associated with a confidence threshold ηi ∈ [0, 100%], where i ∈ {a, b, c, d, e}. During the inference stage, if at any classifier, the difference between the two largest softmax probabilities is less than its threshold, the image is sent to the flat model, otherwise it is classified with the hierarchical model. This mixed model is illustrated
 in the next figure. Although the second decision of the mixed model is correct, it is not confident enough, using ηc = 30%. Therefore, the lesion is diagnosed with the flat model that correctly predicts the class.
 
-<img src="/Images/mixed.png" width="720">
+<img src="/Images/mixed.png" width="820">
 
 ## Results
 
 The next image shows the confusion matrices obtained with the following approaches from top-left: **flat**, **hier-non-shared**, **hier-shared**, and **mixed**
 
 
-<img src="/Images/conf_matrices.png" width="720">
+<img src="/Images/conf_matrices.png" width="820">
